@@ -15,7 +15,6 @@ program
 
 program.parse();
 const option = program.opts();
-// console.log(option);
 
 const invokeAction = async ({ action, id, name, phone, email }) => {
   switch (action) {
@@ -35,15 +34,5 @@ const invokeAction = async ({ action, id, name, phone, email }) => {
       console.warn("\x1B[31m Unknown action type!");
   }
 };
-// console.log(
-//   await addContact({
-// name: "Serhii",
-// phone: "123-23-12",
-// email: "serhii@mail.com",
-//   })
-// );
-// invokeAction({
-//   action: "remove",
-//   id: "1",
-// });
+
 invokeAction(option);
