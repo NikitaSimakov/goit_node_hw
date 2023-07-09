@@ -6,9 +6,6 @@ import {
   removeContact,
 } from "./contacts.js";
 
-console.log("Hello!");
-console.log("My frineds");
-
 program
   .option("-a, --action <type>", "choose action")
   .option("-i, --id <type>", "user id")
