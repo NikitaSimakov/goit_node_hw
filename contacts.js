@@ -33,7 +33,6 @@ export const removeContact = async (contactId) => {
     const contactIndex = data.findIndex((contact) => contact.id === contactId);
     const [removeData] = data.splice(contactIndex, 1);
     writeData(data);
-    // await fs.writeFile(contactsPath, JSON.stringify(data, null, 2), "utf-8");
     if (contactIndex === -1) return null;
     return removeData;
   } catch (error) {
@@ -52,7 +51,6 @@ export const addContact = async ({ name, email, phone }) => {
     const data = await listContacts();
     data.push(newContact);
     writeData(data);
-    // await fs.writeFile(contactsPath, JSON.stringify(data, null, 2), "utf-8");
     return newContact;
   } catch (error) {
     console.error(error);
