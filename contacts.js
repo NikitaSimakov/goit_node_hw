@@ -4,6 +4,10 @@ import path from "path";
 
 export const contactsPath = path.resolve("db", "contacts.json");
 
+const writeData = async (data) => {
+  await fs.writeFile(contactsPath, JSON.stringify(data, null, 2), "utf-8");
+};
+
 export const listContacts = async () => {
   try {
     const data = await fs.readFile(contactsPath, "utf-8");
@@ -28,7 +32,8 @@ export const removeContact = async (contactId) => {
     const data = await listContacts();
     const contactIndex = data.findIndex((contact) => contact.id === contactId);
     const [removeData] = data.splice(contactIndex, 1);
-    await fs.writeFile(contactsPath, JSON.stringify(data, null, 2), "utf-8");
+    writeData(data);
+    // await fs.writeFile(contactsPath, JSON.stringify(data, null, 2), "utf-8");
     if (contactIndex === -1) return null;
     return removeData;
   } catch (error) {
@@ -46,7 +51,8 @@ export const addContact = async ({ name, email, phone }) => {
   try {
     const data = await listContacts();
     data.push(newContact);
-    await fs.writeFile(contactsPath, JSON.stringify(data, null, 2), "utf-8");
+    writeData(data);
+    // await fs.writeFile(contactsPath, JSON.stringify(data, null, 2), "utf-8");
     return newContact;
   } catch (error) {
     console.error(error);
