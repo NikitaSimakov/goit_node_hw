@@ -14,6 +14,7 @@ program
   .option("-e, --email <type", "user email");
 
 program.parse();
+
 const option = program.opts();
 
 const invokeAction = async ({ action, id, name, phone, email }) => {
